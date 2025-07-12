@@ -35,7 +35,7 @@ void ClickerGame::loadGame(const QString& filename){
             >> autoClickerEnabled;
         file.close();
         emit scoreChanged(score);
-        this->autoClickerTick();
+        this->setAutoClickerEnabled(this->autoClickerEnabled);
     } else{
         qDebug() << "An error occured while trying to open savefile";
     }
