@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/source-images">
+        <file>images/happy_racoon.gif</file>
+    </qresource>
+</RCC>

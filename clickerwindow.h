@@ -16,6 +16,7 @@ public:
     explicit ClickerWindow(QWidget *parent = nullptr, ClickerGame* game = nullptr);
     ~ClickerWindow();
 private slots:
+    void setMovie(QString& path);
     void connectSlots();
     void updateScore();
     void on_clickerPushButton_clicked();
