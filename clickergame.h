@@ -5,6 +5,7 @@
 #include <QTextStream>
 #include <QDebug>
 #include <QFile>
+#include <QTimer>
 #include <QMessageBox>
 class ClickerGame : public QObject
 {
@@ -23,12 +24,14 @@ public:
     int getClickValue() const;
     int getAutoClickerValue() const;
     int getClicks() const;
+    bool isAutoClickerEnabled() const;
     void setClickValue(int value);
     void setAutoClickerValue(int value);
     void setAutoClickerUpgradeCost(int cost);
     void setUpgradeCost(int cost);
     void setScore(int value);
     void setClicks(int value);
+    void setAutoClickerEnabled(bool enabled);
 
     void updateScore(int value);
     void buyAutoClicker();
@@ -37,6 +40,8 @@ public:
 signals:
     void scoreChanged(int newScore);
 
+private slots:
+    void autoClickerTick();
 private:
     int score;
     int clicks;

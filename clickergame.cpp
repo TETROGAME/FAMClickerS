@@ -10,7 +10,7 @@ ClickerGame::ClickerGame(QObject *parent)
     autoClickerUpgradeCost = 1000;
     upgradeCost = 50;
     autoClickerEnabled = false;
-
+    autoClickerTick();
 }
 
 void ClickerGame::saveGame(){
@@ -58,6 +58,8 @@ int ClickerGame::getAutoClickerValue() const { return autoClickerValue; }
 
 int ClickerGame::getClicks() const { return clicks; }
 
+bool ClickerGame::isAutoClickerEnabled() const { return autoClickerEnabled; }
+
 void ClickerGame::setClickValue(int value) { clickValue = value; }
 
 void ClickerGame::setAutoClickerValue(int value) { autoClickerValue = value; }
@@ -70,6 +72,15 @@ void ClickerGame::setScore(int value) { score = value; emit scoreChanged(score);
 
 void ClickerGame::setClicks(int value) { clicks = value; }
 
+void ClickerGame::setAutoClickerEnabled(bool enabled) {
+    if(autoClickerEnabled != enabled){
+        autoClickerEnabled = enabled;
+        if(enabled){
+            autoClickerTick();
+        }
+    }
+}
+
 void ClickerGame::updateScore(int value)
 {
     if (score + value < 0) {
@@ -78,6 +89,15 @@ void ClickerGame::updateScore(int value)
     }
     score += value;
     emit scoreChanged(score);
+}
+
+void ClickerGame::autoClickerTick(){
+    QTimer::singleShot(1000, this, [this]() {
+        if (autoClickerEnabled) {
+            updateScore(autoClickerValue);
+            autoClickerTick();
+        }
+    });
 }
 
 ClickerGame::~ClickerGame()

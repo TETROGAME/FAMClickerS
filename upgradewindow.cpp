@@ -44,6 +44,14 @@ void UpgradeWindow::checkUpgradeAutoClickerAvailability()
     }
 }
 
+void UpgradeWindow::checkAutoClickerEnabled(){
+    if(clickerGame->getAutoClickerValue() > 0){
+        clickerGame->setAutoClickerEnabled(true);
+    } else {
+        clickerGame->setAutoClickerEnabled(false);
+    }
+}
+
 void UpgradeWindow::updateClickValueLabels()
 {
     ui->currentClickValuerLevelLabel->setText(QString("Очков за клик: %1")
@@ -67,20 +75,21 @@ void UpgradeWindow::connectSlots()
     connect(clickerGame, &ClickerGame::scoreChanged, this, &UpgradeWindow::checkUpgradeAutoClickerAvailability);
     connect(clickerGame, &ClickerGame::scoreChanged, this, &UpgradeWindow::updateClickValueLabels);
     connect(clickerGame, &ClickerGame::scoreChanged, this, &UpgradeWindow::updateAutoClickerLabels);
+    connect(clickerGame, &ClickerGame::scoreChanged, this, &UpgradeWindow::checkAutoClickerEnabled);
 }
 
 void UpgradeWindow::on_upgradeClickValuePushButton_clicked()
 {
     int oldCost = clickerGame->getUpgradeCost();
     clickerGame->setClickValue(clickerGame->getClickValue() + 1);
-    clickerGame->updateScore(-oldCost);
     clickerGame->setUpgradeCost(oldCost * 2);
+    clickerGame->updateScore(-oldCost);
 }
 
 void UpgradeWindow::on_upgradeAutoClickerPushButton_clicked()
 {
     int oldAutoCost = clickerGame->getAutoClickerUpgradeCost();
     clickerGame->setAutoClickerValue(clickerGame->getAutoClickerValue() + 1);
-    clickerGame->updateScore(-oldAutoCost);
     clickerGame->setAutoClickerUpgradeCost(oldAutoCost * 10);
+    clickerGame->updateScore(-oldAutoCost);
 }
