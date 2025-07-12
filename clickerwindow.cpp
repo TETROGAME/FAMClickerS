@@ -10,6 +10,8 @@ ClickerWindow::ClickerWindow(QWidget *parent, ClickerGame* game)
     this->setFixedSize(this->size());
     this->setWindowTitle("КЛИКАЙ!1!!1!");
 
+    connectSlots();
+
     setWindowFlags(Qt::Window | Qt::CustomizeWindowHint
                    | Qt::WindowTitleHint);
 }
@@ -21,7 +23,7 @@ ClickerWindow::~ClickerWindow()
 
 void ClickerWindow::connectSlots()
 {
-
+    connect(clickerGame, &ClickerGame::scoreChanged, this, &ClickerWindow::updateScore);
 }
 
 void ClickerWindow::updateScore()
@@ -37,6 +39,5 @@ void ClickerWindow::updateScore()
 void ClickerWindow::on_clickerPushButton_clicked()
 {
     clickerGame->click();
-    updateScore();
 }
 

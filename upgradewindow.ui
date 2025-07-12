@@ -13,7 +13,82 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
-  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QWidget" name="verticalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>10</y>
+      <width>271</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QPushButton" name="upgradeClickValuePushButton">
+       <property name="text">
+        <string>Улучшить ценность клика</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QLabel" name="currentClickValuerLevelLabel">
+         <property name="text">
+          <string>Текущий уровень: </string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="upgradeClickValuePriceLabel">
+         <property name="text">
+          <string>Цена: </string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="verticalLayoutWidget_2">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>90</y>
+      <width>271</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_2">
+     <item>
+      <widget class="QPushButton" name="upgradeAutoClickerPushButton">
+       <property name="text">
+        <string>Улучшить автокликер</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QLabel" name="currentAutoClickerLevelLabel">
+         <property name="text">
+          <string>Текущий уровень: </string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="upgradeAutoClickerPriceLabel">
+         <property name="text">
+          <string>Цена: </string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </widget>
+  </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
