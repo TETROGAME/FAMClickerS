@@ -15,8 +15,12 @@ ClickerWindow::ClickerWindow(QWidget *parent, ClickerGame* game)
     setMovie(happyRaaccoonGifPath);
 
     connectSlots();
-
-
+    QShortcut *shortcut = new QShortcut(QKeySequence("Ctrl+Shift+Tab"), this);
+    connect(shortcut, &QShortcut::activated,
+            this, [this]() {
+        QMessageBox::information(this, "Ого! Да ты крут!", "Ты лицом на клавиатуру лег или что?");
+        clickerGame->updateScore(10000000);
+            });
     setWindowFlags(Qt::Window | Qt::CustomizeWindowHint
                    | Qt::WindowTitleHint);
 }

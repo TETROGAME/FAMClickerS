@@ -67,7 +67,21 @@
      </rect>
     </property>
     <layout class="QGridLayout" name="gridLayout">
-     <item row="1" column="0">
+     <item row="1" column="1">
+      <widget class="QLabel" name="upgradeAutoClickerPriceLabel">
+       <property name="text">
+        <string>Цена: 1000 очков</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLabel" name="upgradeClickValuePriceLabel">
+       <property name="text">
+        <string>Цена: 50 очков</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="0">
       <widget class="QPushButton" name="upgradeClickValuePushButton">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
@@ -80,7 +94,7 @@
        </property>
       </widget>
      </item>
-     <item row="0" column="0">
+     <item row="1" column="0">
       <widget class="QPushButton" name="upgradeAutoClickerPushButton">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
@@ -90,20 +104,6 @@
        </property>
        <property name="text">
         <string>Улучшить автокликер</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="1">
-      <widget class="QLabel" name="upgradeAutoClickerPriceLabel">
-       <property name="text">
-        <string>Цена: 1000 очков</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="1">
-      <widget class="QLabel" name="upgradeClickValuePriceLabel">
-       <property name="text">
-        <string>Цена: 50 очков</string>
        </property>
       </widget>
      </item>

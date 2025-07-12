@@ -66,13 +66,13 @@ void ClickerGame::setAutoClickerUpgradeCost(int cost) { autoClickerUpgradeCost =
 
 void ClickerGame::setUpgradeCost(int cost) { upgradeCost = cost; }
 
-void ClickerGame::setScore(int value) { score = value; }
+void ClickerGame::setScore(int value) { score = value; emit scoreChanged(score); }
 
 void ClickerGame::setClicks(int value) { clicks = value; }
 
 void ClickerGame::updateScore(int value)
 {
-    if (score < value) {
+    if (score + value < 0) {
         QMessageBox::warning(nullptr, "Живи по средствам!", "Похоже тебе не хватает на это очков!");
         return;
     }

@@ -71,17 +71,16 @@ void UpgradeWindow::connectSlots()
 
 void UpgradeWindow::on_upgradeClickValuePushButton_clicked()
 {
+    int oldCost = clickerGame->getUpgradeCost();
     clickerGame->setClickValue(clickerGame->getClickValue() + 1);
-    clickerGame->updateScore(-clickerGame->getUpgradeCost());
-    clickerGame->setUpgradeCost(clickerGame->getUpgradeCost() * 2);
-    updateClickValueLabels();
-    checkUpgradeClickValueAvailability();
+    clickerGame->updateScore(-oldCost);
+    clickerGame->setUpgradeCost(oldCost * 2);
 }
-
 
 void UpgradeWindow::on_upgradeAutoClickerPushButton_clicked()
 {
-    clickerGame->setAutoClickerUpgradeCost(clickerGame->getAutoClickerValue() + 1);
-
+    int oldAutoCost = clickerGame->getAutoClickerUpgradeCost();
+    clickerGame->setAutoClickerValue(clickerGame->getAutoClickerValue() + 1);
+    clickerGame->updateScore(-oldAutoCost);
+    clickerGame->setAutoClickerUpgradeCost(oldAutoCost * 10);
 }
-
