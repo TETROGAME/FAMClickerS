@@ -10,9 +10,12 @@ ClickerWindow::ClickerWindow(QWidget *parent, ClickerGame* game)
     clickerGame = game;
     this->setFixedSize(this->size());
     this->setWindowTitle("КЛИКАЙ!1!!1!");
+
     QString happyRaaccoonGifPath = ":/source-images/images/happy_racoon.gif";
     setMovie(happyRaaccoonGifPath);
+
     connectSlots();
+
 
     setWindowFlags(Qt::Window | Qt::CustomizeWindowHint
                    | Qt::WindowTitleHint);

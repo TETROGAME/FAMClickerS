@@ -2,6 +2,7 @@
 #define CLICKERWINDOW_H
 
 #include <QMainWindow>
+#include <QShortcut>
 #include "clickergame.h"
 
 namespace Ui {
