@@ -2,6 +2,7 @@
 #define UPGRADEWINDOW_H
 
 #include <QMainWindow>
+#include <QFileDialog>
 #include "clickerwindow.h"
 #include "clickergame.h"
 namespace Ui {
@@ -26,6 +27,10 @@ private slots:
 
     void on_upgradeClickValuePushButton_clicked();
     void on_upgradeAutoClickerPushButton_clicked();
+
+    void on_saveGameAction_triggered();
+
+    void on_loadGameAction_triggered();
 
 private:
     Ui::UpgradeWindow *ui;

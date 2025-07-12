@@ -13,26 +13,29 @@ ClickerGame::ClickerGame(QObject *parent)
     autoClickerTick();
 }
 
-void ClickerGame::saveGame(){
-    QFile file("savefile.bin");
+void ClickerGame::saveGame(const QString& filename){
+    QFile file(filename);
     if (file.open(QIODevice::WriteOnly | QIODevice::Text)) {
         QDataStream out(&file);
         out << score << clicks << clickValue
-            << autoClickerValue << autoClickerUpgradeCost << upgradeCost;
+            << autoClickerValue << autoClickerUpgradeCost << upgradeCost
+            << autoClickerEnabled;
         file.close();
     } else{
         qDebug() << "An error occured while trying to create savefile";
     }
 }
 
-void ClickerGame::loadGame(){
-    QFile file("savefile.bin");
-    if (file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+void ClickerGame::loadGame(const QString& filename){
+    QFile file(filename);
+    if (file.open(QIODevice::ReadOnly)) {
         QDataStream in(&file);
         in >> score >> clicks >> clickValue
-            >> autoClickerValue >> autoClickerUpgradeCost >> upgradeCost;
+            >> autoClickerValue >> autoClickerUpgradeCost >> upgradeCost
+            >> autoClickerEnabled;
         file.close();
         emit scoreChanged(score);
+        this->autoClickerTick();
     } else{
         qDebug() << "An error occured while trying to open savefile";
     }
@@ -43,35 +46,19 @@ void ClickerGame::click(){
     clicks++;
     emit scoreChanged(score);
 }
-
-int ClickerGame::getScore() const {
-    return score;
-}
-
+int ClickerGame::getScore() const { return score;}
 int ClickerGame::getUpgradeCost() const { return upgradeCost; }
-
 int ClickerGame::getAutoClickerUpgradeCost() const { return autoClickerUpgradeCost; }
-
 int ClickerGame::getClickValue() const { return clickValue; }
-
 int ClickerGame::getAutoClickerValue() const { return autoClickerValue; }
-
 int ClickerGame::getClicks() const { return clicks; }
-
 bool ClickerGame::isAutoClickerEnabled() const { return autoClickerEnabled; }
-
 void ClickerGame::setClickValue(int value) { clickValue = value; }
-
 void ClickerGame::setAutoClickerValue(int value) { autoClickerValue = value; }
-
 void ClickerGame::setAutoClickerUpgradeCost(int cost) { autoClickerUpgradeCost = cost; }
-
 void ClickerGame::setUpgradeCost(int cost) { upgradeCost = cost; }
-
 void ClickerGame::setScore(int value) { score = value; emit scoreChanged(score); }
-
 void ClickerGame::setClicks(int value) { clicks = value; }
-
 void ClickerGame::setAutoClickerEnabled(bool enabled) {
     if(autoClickerEnabled != enabled){
         autoClickerEnabled = enabled;

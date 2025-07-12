@@ -14,8 +14,8 @@ public:
     explicit ClickerGame(QObject *parent = nullptr);
     ~ClickerGame();
 
-    void saveGame();
-    void loadGame();
+    void saveGame(const QString& filename);
+    void loadGame(const QString& filename);
     void click();
 
     int getScore() const;

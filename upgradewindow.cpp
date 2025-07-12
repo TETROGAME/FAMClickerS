@@ -93,3 +93,27 @@ void UpgradeWindow::on_upgradeAutoClickerPushButton_clicked()
     clickerGame->setAutoClickerUpgradeCost(oldAutoCost * 10);
     clickerGame->updateScore(-oldAutoCost);
 }
+
+void UpgradeWindow::on_saveGameAction_triggered()
+{
+    QString filename = QFileDialog::getSaveFileName(this, tr("Сохранить игру")
+                                                    , "", tr("Файлы сохранений (*.savefile)"));
+    if (!filename.isEmpty()) {
+        clickerGame->saveGame(filename);
+        QMessageBox::information(this, "Сохранение игры", "Игра успешно сохранена в файл: " + filename);
+    }
+
+}
+
+
+void UpgradeWindow::on_loadGameAction_triggered()
+{
+    QString filename = QFileDialog::getOpenFileName(this, tr("Загрузить игру")
+                                                    , "", tr("Файлы сохранений (*.savefile)"));
+    if (!filename.isEmpty()) {
+        clickerGame->loadGame(filename);
+        QMessageBox::information(this, "Загрузка игры", "Игра успешно загружена из файла: " + filename);
+    }
+
+}
+

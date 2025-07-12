@@ -105,8 +105,26 @@
      <height>17</height>
     </rect>
    </property>
+   <widget class="QMenu" name="gameProgressMenu">
+    <property name="title">
+     <string>Игровой прогресс</string>
+    </property>
+    <addaction name="saveGameAction"/>
+    <addaction name="loadGameAction"/>
+   </widget>
+   <addaction name="gameProgressMenu"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="saveGameAction">
+   <property name="text">
+    <string>Сохранить игру</string>
+   </property>
+  </action>
+  <action name="loadGameAction">
+   <property name="text">
+    <string>Загрузить игру</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>
