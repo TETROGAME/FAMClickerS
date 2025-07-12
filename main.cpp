@@ -4,7 +4,8 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-    UpgradeWindow upgradeWindow;
+    ClickerGame game;
+    UpgradeWindow upgradeWindow(nullptr, &game);
     upgradeWindow.show();
     return a.exec();
 }
